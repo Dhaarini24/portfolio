@@ -1,0 +1,607 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+
+@custom-variant dark (&:is(.dark *));
+
+/* ==========================================================================
+   THEME MAPPING — Tailwind v4 utility generation
+   ========================================================================== */
+
+@theme inline {
+  --font-sans: var(--font-inter);
+  --font-mono: var(--font-geist-mono);
+  --font-heading: var(--font-space-grotesk);
+
+  /* semantic (theme-aware, values in :root / .dark below) */
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-destructive: var(--destructive);
+  --color-success: var(--success);
+  --color-warning: var(--warning);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
+
+  /* raw palette scale (theme-independent — always the same swatch) */
+  --color-primary-50: var(--primary-50);
+  --color-primary-100: var(--primary-100);
+  --color-primary-200: var(--primary-200);
+  --color-primary-300: var(--primary-300);
+  --color-primary-400: var(--primary-400);
+  --color-primary-500: var(--primary-500);
+  --color-primary-600: var(--primary-600);
+  --color-primary-700: var(--primary-700);
+  --color-primary-800: var(--primary-800);
+  --color-primary-900: var(--primary-900);
+  --color-primary-950: var(--primary-950);
+
+  --color-secondary-50: var(--secondary-50);
+  --color-secondary-100: var(--secondary-100);
+  --color-secondary-200: var(--secondary-200);
+  --color-secondary-300: var(--secondary-300);
+  --color-secondary-400: var(--secondary-400);
+  --color-secondary-500: var(--secondary-500);
+  --color-secondary-600: var(--secondary-600);
+  --color-secondary-700: var(--secondary-700);
+  --color-secondary-800: var(--secondary-800);
+  --color-secondary-900: var(--secondary-900);
+  --color-secondary-950: var(--secondary-950);
+
+  --color-accent-50: var(--accent-50);
+  --color-accent-100: var(--accent-100);
+  --color-accent-200: var(--accent-200);
+  --color-accent-300: var(--accent-300);
+  --color-accent-400: var(--accent-400);
+  --color-accent-500: var(--accent-500);
+  --color-accent-600: var(--accent-600);
+  --color-accent-700: var(--accent-700);
+  --color-accent-800: var(--accent-800);
+  --color-accent-900: var(--accent-900);
+  --color-accent-950: var(--accent-950);
+
+  --color-navy-50: var(--navy-50);
+  --color-navy-100: var(--navy-100);
+  --color-navy-200: var(--navy-200);
+  --color-navy-300: var(--navy-300);
+  --color-navy-400: var(--navy-400);
+  --color-navy-500: var(--navy-500);
+  --color-navy-600: var(--navy-600);
+  --color-navy-700: var(--navy-700);
+  --color-navy-800: var(--navy-800);
+  --color-navy-900: var(--navy-900);
+  --color-navy-950: var(--navy-950);
+
+  /* radius */
+  --radius-xs: 0.25rem;
+  --radius-sm: 0.5rem;
+  --radius-md: 0.75rem;
+  --radius-lg: 1rem;
+  --radius-xl: 1.25rem;
+  --radius-2xl: 1.75rem;
+  --radius-3xl: 2.25rem;
+  --radius-4xl: 3rem;
+  --radius-full: 9999px;
+
+  /* elevation (theme-aware, values in :root / .dark below) */
+  --shadow-elevation-1: var(--elevation-1);
+  --shadow-elevation-2: var(--elevation-2);
+  --shadow-elevation-3: var(--elevation-3);
+  --shadow-elevation-4: var(--elevation-4);
+  --shadow-glow-primary: var(--glow-primary);
+  --shadow-glow-secondary: var(--glow-secondary);
+  --shadow-glow-accent: var(--glow-accent);
+
+  /* motion */
+  --ease-standard: cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-decelerate: cubic-bezier(0, 0, 0.2, 1);
+  --ease-accelerate: cubic-bezier(0.4, 0, 1, 1);
+  --ease-premium: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+
+  --duration-instant: 100ms;
+  --duration-fast: 200ms;
+  --duration-base: 300ms;
+  --duration-moderate: 500ms;
+  --duration-slow: 800ms;
+
+  /* breakpoints */
+  --breakpoint-3xl: 1920px;
+
+  /* keyframe-driven utilities: animate-fade-in, animate-fade-in-up, etc. */
+  --animate-fade-in: fade-in var(--duration-base) var(--ease-standard) both;
+  --animate-fade-in-up: fade-in-up var(--duration-moderate) var(--ease-premium) both;
+  --animate-blur-reveal: blur-reveal var(--duration-slow) var(--ease-premium) both;
+  --animate-scale-in: scale-in var(--duration-base) var(--ease-premium) both;
+  --animate-float: float 6s var(--ease-standard) infinite;
+  --animate-gradient: gradient-shift 8s linear infinite;
+  --animate-blink: blink 1s step-end infinite;
+}
+
+/* ==========================================================================
+   COLOR PALETTE — raw scale (theme-independent)
+   ========================================================================== */
+
+:root {
+  /* Primary = teal */
+  --primary-50: #f0fdfa;
+  --primary-100: #ccfbf1;
+  --primary-200: #99f6e4;
+  --primary-300: #5eead4;
+  --primary-400: #2dd4bf;
+  --primary-500: #14b8a6;
+  --primary-600: #0d9488;
+  --primary-700: #0f766e;
+  --primary-800: #115e59;
+  --primary-900: #134e4a;
+  --primary-950: #042f2e;
+
+  /* Secondary = blue */
+  --secondary-50: #eff6ff;
+  --secondary-100: #dbeafe;
+  --secondary-200: #bfdbfe;
+  --secondary-300: #93c5fd;
+  --secondary-400: #60a5fa;
+  --secondary-500: #3b82f6;
+  --secondary-600: #2563eb;
+  --secondary-700: #1d4ed8;
+  --secondary-800: #1e40af;
+  --secondary-900: #1e3a8a;
+  --secondary-950: #172554;
+
+  /* Accent / highlight = cyan */
+  --accent-50: #ecfeff;
+  --accent-100: #cffafe;
+  --accent-200: #a5f3fc;
+  --accent-300: #67e8f9;
+  --accent-400: #22d3ee;
+  --accent-500: #06b6d4;
+  --accent-600: #0891b2;
+  --accent-700: #0e7490;
+  --accent-800: #155e75;
+  --accent-900: #164e63;
+  --accent-950: #083344;
+
+  /* Neutral = blue-grey (slate for text, gray for surfaces) */
+  --navy-50: #f9fafb;
+  --navy-100: #f1f5f9;
+  --navy-200: #e2e8f0;
+  --navy-300: #cbd5e1;
+  --navy-400: #94a3b8;
+  --navy-500: #64748b;
+  --navy-600: #475569;
+  --navy-700: #334155;
+  --navy-800: #1f2937;
+  --navy-900: #111827;
+  --navy-950: #030712;
+
+  --success: oklch(0.72 0.19 150);
+  --warning: oklch(0.8 0.17 80);
+
+  /* semantic — light theme (secondary/accessible mode) */
+  --background: var(--navy-50);
+  --foreground: var(--navy-950);
+  --card: oklch(1 0 0);
+  --card-foreground: var(--navy-950);
+  --popover: oklch(1 0 0);
+  --popover-foreground: var(--navy-950);
+  --primary: var(--primary-600);
+  --primary-foreground: var(--navy-50);
+  --secondary: var(--secondary-600);
+  --secondary-foreground: var(--navy-50);
+  --muted: var(--navy-100);
+  --muted-foreground: var(--navy-500);
+  --accent: var(--accent-600);
+  --accent-foreground: var(--navy-50);
+  --destructive: oklch(0.577 0.245 27.325);
+  --border: var(--navy-200);
+  --input: var(--navy-200);
+  --ring: var(--primary-500);
+  --chart-1: var(--primary-500);
+  --chart-2: var(--secondary-500);
+  --chart-3: var(--accent-500);
+  --chart-4: oklch(0.371 0 0);
+  --chart-5: oklch(0.269 0 0);
+  --radius: 1rem;
+  --sidebar: var(--navy-100);
+  --sidebar-foreground: var(--navy-950);
+  --sidebar-primary: var(--primary-600);
+  --sidebar-primary-foreground: var(--navy-50);
+  --sidebar-accent: var(--navy-200);
+  --sidebar-accent-foreground: var(--navy-950);
+  --sidebar-border: var(--navy-200);
+  --sidebar-ring: var(--primary-500);
+
+  /* elevation — light theme: soft ambient shadows */
+  --elevation-1: 0 1px 2px rgb(15 15 35 / 0.06);
+  --elevation-2: 0 4px 16px rgb(15 15 35 / 0.08);
+  --elevation-3: 0 12px 32px rgb(15 15 35 / 0.12);
+  --elevation-4: 0 24px 64px rgb(15 15 35 / 0.16);
+  --glow-primary: 0 0 24px rgb(20 184 166 / 0.25);
+  --glow-secondary: 0 0 24px rgb(59 130 246 / 0.2);
+  --glow-accent: 0 0 24px rgb(6 182 212 / 0.2);
+  --glass-bg: rgb(255 255 255 / 0.6);
+  --glass-border: rgb(20 184 166 / 0.15);
+}
+
+/* ==========================================================================
+   DARK THEME — default brand experience (Deep Navy)
+   ========================================================================== */
+
+.dark {
+  --background: var(--navy-950);
+  --foreground: var(--navy-50);
+  --card: var(--navy-900);
+  --card-foreground: var(--navy-50);
+  --popover: var(--navy-900);
+  --popover-foreground: var(--navy-50);
+  --primary: var(--primary-500);
+  --primary-foreground: var(--navy-950);
+  --secondary: var(--secondary-500);
+  --secondary-foreground: var(--navy-50);
+  --muted: var(--navy-800);
+  --muted-foreground: var(--navy-400);
+  --accent: var(--accent-500);
+  --accent-foreground: var(--navy-950);
+  --destructive: oklch(0.704 0.191 22.216);
+  --border: rgb(45 212 191 / 0.15);
+  --input: rgb(45 212 191 / 0.22);
+  --ring: var(--primary-400);
+  --chart-1: var(--primary-500);
+  --chart-2: var(--secondary-500);
+  --chart-3: var(--accent-500);
+  --chart-4: oklch(0.371 0 0);
+  --chart-5: oklch(0.269 0 0);
+  --sidebar: var(--navy-900);
+  --sidebar-foreground: var(--navy-50);
+  --sidebar-primary: var(--primary-500);
+  --sidebar-primary-foreground: var(--navy-950);
+  --sidebar-accent: var(--navy-800);
+  --sidebar-accent-foreground: var(--navy-50);
+  --sidebar-border: rgb(45 212 191 / 0.15);
+  --sidebar-ring: var(--primary-400);
+
+  /* elevation — dark theme: soft shadow + subtle teal/blue glow */
+  --elevation-1: 0 1px 2px rgb(0 0 0 / 0.4), inset 0 0 0 1px rgb(255 255 255 / 0.03);
+  --elevation-2: 0 4px 16px rgb(0 0 0 / 0.45), 0 0 24px rgb(20 184 166 / 0.08);
+  --elevation-3: 0 12px 32px rgb(0 0 0 / 0.55), 0 0 40px rgb(20 184 166 / 0.12);
+  --elevation-4: 0 24px 64px rgb(0 0 0 / 0.6), 0 0 80px rgb(59 130 246 / 0.14);
+  --glow-primary: 0 0 24px rgb(20 184 166 / 0.4);
+  --glow-secondary: 0 0 24px rgb(59 130 246 / 0.38);
+  --glow-accent: 0 0 24px rgb(6 182 212 / 0.38);
+  --glass-bg: rgb(17 24 39 / 0.55);
+  --glass-border: rgb(45 212 191 / 0.12);
+}
+
+/* ==========================================================================
+   KEYFRAMES
+   ========================================================================== */
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes blur-reveal {
+  from {
+    opacity: 0;
+    filter: blur(12px);
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    filter: blur(0);
+    transform: translateY(0);
+  }
+}
+
+@keyframes scale-in {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-12px);
+  }
+}
+
+@keyframes gradient-shift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Registered custom property so the conic-gradient border angle is animatable. */
+@property --border-angle {
+  syntax: "<angle>";
+  inherits: false;
+  initial-value: 0deg;
+}
+
+@keyframes border-angle-spin {
+  to {
+    --border-angle: 360deg;
+  }
+}
+
+@keyframes grid-pan {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: var(--grid-size, 3.5rem) var(--grid-size, 3.5rem);
+  }
+}
+
+@keyframes blink {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+}
+
+/* ==========================================================================
+   DESIGN-SYSTEM UTILITIES — glassmorphism & gradient helpers
+   ========================================================================== */
+
+@utility glass {
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--elevation-2);
+  backdrop-filter: blur(20px) saturate(160%);
+  -webkit-backdrop-filter: blur(20px) saturate(160%);
+}
+
+@utility glass-strong {
+  background: var(--glass-bg);
+  border-bottom: 1px solid var(--glass-border);
+  backdrop-filter: blur(12px) saturate(160%);
+  -webkit-backdrop-filter: blur(12px) saturate(160%);
+}
+
+@utility text-gradient {
+  background-image: linear-gradient(
+    135deg,
+    var(--primary-400),
+    var(--secondary-400) 50%,
+    var(--accent-400)
+  );
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+@utility gradient-bg-animated {
+  background-image: linear-gradient(
+    120deg,
+    var(--primary-500),
+    var(--secondary-500),
+    var(--accent-500),
+    var(--secondary-500),
+    var(--primary-500)
+  );
+  background-size: 200% 200%;
+  animation: gradient-shift 8s linear infinite;
+}
+
+/* Animated conic-gradient border via the mask-composite "cut-out" technique —
+   the gradient fills the element, then a mask keeps only the `padding`-width
+   frame. Element must set its own border-radius. */
+.glow-border {
+  position: relative;
+  isolation: isolate;
+}
+
+.glow-border::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  padding: 1.5px;
+  border-radius: inherit;
+  background: conic-gradient(
+    from var(--border-angle),
+    transparent 15%,
+    var(--primary-500),
+    var(--accent-500) 50%,
+    var(--secondary-500),
+    transparent 85%
+  );
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  animation: border-angle-spin 6s linear infinite;
+  pointer-events: none;
+}
+
+/* Signature site-wide woven mesh (fixed, behind all content): two faint
+   diagonal line sets in teal + blue crossing to form a subtle diamond weave —
+   distinct from a plain dot grid. */
+.site-mesh {
+  background-image:
+    repeating-linear-gradient(45deg, rgb(45 212 191 / 0.05) 0 1px, transparent 1px 26px),
+    repeating-linear-gradient(-45deg, rgb(59 130 246 / 0.05) 0 1px, transparent 1px 26px);
+  -webkit-mask-image: radial-gradient(
+    ellipse 100% 85% at 50% 15%,
+    #000 45%,
+    transparent 100%
+  );
+  mask-image: radial-gradient(ellipse 100% 85% at 50% 15%, #000 45%, transparent 100%);
+}
+
+/* Subtle drifting grid — layered behind hero content. */
+.moving-grid {
+  --grid-size: 3.5rem;
+  background-image:
+    linear-gradient(to right, var(--border) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--border) 1px, transparent 1px);
+  background-size: var(--grid-size) var(--grid-size);
+  animation: grid-pan 20s linear infinite;
+}
+
+/* Soft multi-color glow for the floating navbar shell (teal + blue + cyan). */
+.nav-glow {
+  box-shadow:
+    0 8px 32px -8px rgb(0 0 0 / 0.6),
+    0 0 24px -6px rgb(20 184 166 / 0.25),
+    0 0 40px -12px rgb(59 130 246 / 0.16),
+    0 0 60px -16px rgb(6 182 212 / 0.14);
+}
+
+/* Themed scrollbar for scrollable panels (e.g. the project detail modal) —
+   thin, teal/blue gradient thumb, transparent track, instead of the browser
+   default. */
+.modal-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: var(--primary-500) transparent;
+}
+
+.modal-scrollbar::-webkit-scrollbar {
+  width: 8px;
+}
+
+.modal-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.modal-scrollbar::-webkit-scrollbar-thumb {
+  background: linear-gradient(var(--primary-500), var(--secondary-500));
+  border-radius: 9999px;
+}
+
+.modal-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: var(--primary-400);
+}
+
+/* Gradient border that's a subtle static frame at rest and spins + brightens on
+   hover — only the hovered card animates, so it scales to many cards cheaply. */
+.card-glow-border {
+  position: relative;
+  isolation: isolate;
+}
+
+.card-glow-border::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  padding: 1px;
+  border-radius: inherit;
+  background: conic-gradient(
+    from var(--border-angle),
+    transparent 20%,
+    var(--primary-500),
+    var(--accent-500) 50%,
+    var(--secondary-500),
+    transparent 80%
+  );
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  opacity: 0.3;
+  animation: border-angle-spin 6s linear infinite;
+  animation-play-state: paused;
+  transition: opacity 0.4s ease;
+  pointer-events: none;
+}
+
+.card-glow-border:hover::before {
+  opacity: 1;
+  animation-play-state: running;
+}
+
+/* ==========================================================================
+   BASE LAYER
+   ========================================================================== */
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+    overflow-x: hidden;
+  }
+  html {
+    @apply font-sans;
+    scroll-behavior: smooth;
+    /* Keeps anchored sections clear of the fixed floating navbar. */
+    scroll-padding-top: 6rem;
+    overflow-x: hidden;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
